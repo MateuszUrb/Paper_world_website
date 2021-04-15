@@ -1,6 +1,4 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Paper-Worlds simply put is a website where you can find books and read short description>
 
 ## Available Scripts
 
