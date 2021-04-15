@@ -1,4 +1,4 @@
-## Paper-Worlds simply put is a website where you can find books and read short description>
+## Paper-Worlds simply put is a website where you can find books and read short description
 
 ## Available Scripts
 
