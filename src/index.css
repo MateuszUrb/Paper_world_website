@@ -1,13 +1,28 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import-normalize;
+
+@font-face {
+  font-family: 'martellight';
+  src: url('./assets/fonts/martel-light-webfont.woff2') format('woff2'),
+    url('./assets/fonts/martel-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'martelregular';
+  src: url('./assets/fonts/martel-regular-webfont.woff2') format('woff2'),
+    url('./assets/fonts/martel-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: 'marteldemibold';
+  src: url('./assets/fonts/martel-semibold-webfont.woff2') format('woff2'),
+    url('./assets/fonts/martel-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
