@@ -1,0 +1,33 @@
+/* colors */
+$primary-color-300: hsl(247, 27%, 62%);
+$primary-color-500: hsl(247, 27%, 32%);
+$primary-color-600: hsl(247, 27%, 12%);
+
+$secondary-color-300: hsl(48, 100%, 62%);
+$secondary-color-500: hsl(48, 100%, 32%);
+$secondary-color-600: hsl(48, 100%, 15%);
+
+$cta-color-300: hsl(12, 98%, 69%);
+$cta-color-500: hsl(12, 98%, 49%);
+$cta-color-600: hsl(12, 98%, 25%);
+
+/* cart background */
+$cart-color-300: hsl(248, 28%, 61%);
+$cart-color-500: hsl(248, 28%, 31%);
+$cart-color-600: hsl(248, 28%, 15%);
+
+/* gradient from top left to bottom right  */
+$gradient-color-1: var(--primary-color-500);
+$gradient-color-2: var(--secondary-color-600);
+
+/* fonts */
+$martel-light-300: 'martellight',
+serif,
+sans-serif;
+$martel-regular-400: 'martelregular',
+serif,
+sans-serif;
+$martel-semibold-600: 'marteldemibold',
+serif,
+sans-serif;
+/* font-size */

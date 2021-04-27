@@ -1,0 +1,16 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+@import 'styles/fonts';
+@import 'styles/variables';
+
+.App {
+  text-align: center;
+}
+
+h1 {
+  font-family: $martel-semibold-600;
+}
