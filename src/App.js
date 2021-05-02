@@ -1,10 +1,9 @@
 import './App.scss';
 
-
 function App() {
   return (
     <>
-      <h1>init</h1>
+      <h1>init </h1>
     </>
   );
 }
