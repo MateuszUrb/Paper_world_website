@@ -17,17 +17,18 @@ $cart-color-500: hsl(248, 28%, 31%);
 $cart-color-600: hsl(248, 28%, 15%);
 
 /* gradient from top left to bottom right  */
-$gradient-color-1: var(--primary-color-500);
-$gradient-color-2: var(--secondary-color-600);
+$gradient-color-1: $primary-color-500;
+$gradient-color-2: hsl(48, 72%, 13%);;
 
 /* fonts */
-$martel-light-300: 'martellight',
-serif,
-sans-serif;
-$martel-regular-400: 'martelregular',
-serif,
-sans-serif;
-$martel-semibold-600: 'marteldemibold',
-serif,
-sans-serif;
+$martel-light-300: ('martellight', serif, sans-serif);
+$martel-regular-400: ('martelregular', serif, sans-serif);
+$martel-semibold-600: ('marteldemibold', serif, sans-serif);
+
 /* font-size */
+// mobile
+$mobile_martelSemi_xs: 18px;
+$mobile_martelSemi_s: 15px;
+$mobile_bookTitleBold: 23px;
+$mobile_paragraphLight:  16px;
+$mobile_book_descryptionRegular: 8px;

@@ -1,0 +1,46 @@
+@import './variables';
+
+.header {
+    background: linear-gradient(120deg, $gradient-color-1, $gradient-color-2);
+    height: 100vh;
+}
+
+.header__bg_pattern {
+    position: absolute;
+    top: 0;
+    svg {
+        height: 100vh;
+        width: 100vw;
+    }
+}
+
+.nav {
+    margin:  0 auto;
+    width: 80%;
+    height: 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 22px;
+    &__logo {
+        width: 50px;
+        height: 50px;
+    }
+    &__BtnGitHub {
+        border-radius: 10px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 50px;
+        filter: drop-shadow(0 24px 24px hsla(48, 72%, 54%, 0.32));
+        &:hover {
+            background-color: aqua;
+        }
+        svg {
+            padding: .3rem;
+        }
+    }
+
+}
