@@ -4,13 +4,12 @@
   box-sizing: border-box;
 }
 
-@import 'styles/fonts';
-@import 'styles/variables';
+@import './assets/styles/fonts';
+@import './assets/styles/variables';
 
 .App {
   text-align: center;
 }
 
 h1 {
-  font-family: $martel-semibold-600;
 }
