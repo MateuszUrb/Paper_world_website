@@ -3,6 +3,10 @@ $primary-color-300: hsl(247, 27%, 62%);
 $primary-color-500: hsl(247, 27%, 32%);
 $primary-color-600: hsl(247, 27%, 12%);
 
+// form BG
+$form-bg: hsla(248, 28%, 21%, 1);
+$form-shadow: hsla(248, 27%, 16%, 50%);
+
 $secondary-color-300: hsl(48, 100%, 62%);
 $secondary-color-500: hsl(48, 100%, 32%);
 $secondary-color-600: hsl(48, 100%, 15%);
@@ -27,8 +31,12 @@ $martel-semibold-600: ('marteldemibold', serif, sans-serif);
 
 /* font-size */
 // mobile
-$mobile_martelSemi_xs: 18px;
-$mobile_martelSemi_s: 15px;
-$mobile_bookTitleBold: 23px;
-$mobile_paragraphLight:  16px;
-$mobile_book_descryptionRegular: 8px;
+$mobile_martelSemi_xs: 1.1rem;
+$mobile_martelSemi_s: 0.9rem;
+$mobile_bookTitleBold: 1.6rem;
+$mobile_paragraphLight: 1rem;
+$mobile_book_descryptionRegular: 0.5rem;
+
+// desktop
+$desktop_header: 2.8rem;
+$desktop_header_paragraph: 1.8rem;

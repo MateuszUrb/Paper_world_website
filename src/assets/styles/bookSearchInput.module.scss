@@ -1,0 +1,30 @@
+@import './variables';
+
+.bookForm {
+    height: 4rem;
+    width: 100%;
+    background-color: $form-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 0;
+    filter: drop-shadow(0 8px 8px $form-shadow);
+    &__input {
+        border-radius: 5px;
+        margin-right: 1rem;
+        height: 2rem;
+        border: 1px solid $primary-color-500;
+        font-family: $martel-regular-400;
+        &:focus {
+            outline-color: $primary-color-500;
+        }
+    }
+    &__button {
+        border-radius: 5px;
+        height: 2rem;
+        border: none;
+        background-color: $cta-color-300;;
+        color: #fff;
+        font-size: $mobile_martelSemi_s;
+    }
+}

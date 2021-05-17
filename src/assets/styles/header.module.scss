@@ -3,11 +3,45 @@
 .header {
     background: linear-gradient(120deg, $gradient-color-1, $gradient-color-2);
     height: 100vh;
+    &__content {
+        color: white;
+        height: 85vh;
+        padding-top: 5rem;
+        &__about {
+            font-family: $martel-semibold-600;
+            // font-size: $mobile_martelSemi_xs;
+            font-size: clamp($mobile_martelSemi_xs, 5vw, $desktop_header);
+            line-height: 28px;
+            width: 67%;
+            margin-bottom: 4rem;
+        }
+        &__intro {
+            font-family: $martel-light-300;
+            font-weight:lighter;
+            line-height: 22px;
+            // font-size: $mobile_martelSemi_s;
+            font-size: clamp($mobile_martelSemi_s, 5vw, $desktop_header_paragraph);
+
+            width: 50%;
+            margin-top: 35px;
+        }
+    }
+}
+.landing {
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    &__book {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        transform: rotate(5.81deg) scale(0.9) translate(27%, 10%);
+    }
 }
 
 .header__bg_pattern {
     position: absolute;
-    top: 0;
+    width: 100%;
     svg {
         height: 100vh;
         width: 100vw;
@@ -15,8 +49,6 @@
 }
 
 .nav {
-    margin:  0 auto;
-    width: 80%;
     height: 6rem;
     display: flex;
     justify-content: space-between;
