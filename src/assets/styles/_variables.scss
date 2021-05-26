@@ -2,7 +2,6 @@
 $primary-color-300: hsl(247, 27%, 62%);
 $primary-color-500: hsl(247, 27%, 32%);
 $primary-color-600: hsl(247, 27%, 12%);
-
 // form BG
 $form-bg: hsla(248, 28%, 21%, 1);
 $form-shadow: hsla(248, 27%, 16%, 50%);
@@ -10,6 +9,8 @@ $form-shadow: hsla(248, 27%, 16%, 50%);
 $secondary-color-300: hsl(48, 100%, 62%);
 $secondary-color-500: hsl(48, 100%, 32%);
 $secondary-color-600: hsl(48, 100%, 15%);
+
+$bookBGfill: hsla(48, 87, 75, 100%);
 
 $cta-color-300: hsl(12, 98%, 69%);
 $cta-color-500: hsl(12, 98%, 49%);
@@ -33,9 +34,9 @@ $martel-semibold-600: ('marteldemibold', serif, sans-serif);
 // mobile
 $mobile_martelSemi_xs: 1.1rem;
 $mobile_martelSemi_s: 0.9rem;
-$mobile_bookTitleBold: 1.6rem;
-$mobile_paragraphLight: 1rem;
-$mobile_book_descryptionRegular: 0.5rem;
+$mobile_bookTitle: 1.6rem;
+$mobile_paragraph: 1rem;
+$mobile_book_description: 0.5rem;
 
 // desktop
 $desktop_header: 2.8rem;

@@ -9,13 +9,26 @@
     svg {
         width: 100%;
         position: absolute;
-        height: auto;
+        height: 100%;
+        pointer-events: none;
     }
 }
 
 .recommendation {
     font-family: $martel-semibold-600;
     margin-top: 41px;
-    font-size: $mobile_martelSemi_xs;
+    font-size: clamp($mobile_martelSemi_s, 5vw, $desktop_header_paragraph);
+    color: $cta-color-300
 
+}
+
+.waves_Pattern {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    img {
+        width: 100%;
+        display: flex;
+        max-height: 22rem;
+    }
 }

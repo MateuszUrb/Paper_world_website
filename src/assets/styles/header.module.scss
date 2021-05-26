@@ -7,23 +7,38 @@
         color: white;
         height: 85vh;
         padding-top: 5rem;
+        @media screen and (min-width:640px) {
+            height: calc(100vh - 96px);
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            padding-top: 0;
+        }
         &__about {
             font-family: $martel-semibold-600;
             // font-size: $mobile_martelSemi_xs;
             font-size: clamp($mobile_martelSemi_xs, 5vw, $desktop_header);
-            line-height: 28px;
+            line-height: 26px;
             width: 67%;
             margin-bottom: 4rem;
+         @media screen and (min-width:640px) {
+            line-height: 64px;
+            max-width: 55%;
+        }
+
         }
         &__intro {
             font-family: $martel-light-300;
             font-weight:lighter;
-            line-height: 22px;
+            line-height: 24px;
             // font-size: $mobile_martelSemi_s;
             font-size: clamp($mobile_martelSemi_s, 5vw, $desktop_header_paragraph);
-
-            width: 50%;
+            width: 53%;
             margin-top: 35px;
+            @media screen and (min-width:640px) {
+            line-height: 45px;
+            max-width: 45%;
+        }
         }
     }
 }
@@ -31,17 +46,45 @@
     width: 100vw;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
     &__book {
         width: 100%;
+        max-width: 66rem;
         position: absolute;
         bottom: 0;
-        transform: rotate(5.81deg) scale(0.9) translate(27%, 10%);
+        margin-right: calc(26vw - 20%);
+        transform: rotate(5.81deg) scale(0.9) translate(37%, 5%);
+        @media screen and (min-width:710px) {
+            transform: rotate(0) scale(0.9) translate(27%, 10%);
+
+        }
+    }
+}
+
+.bookBg_wrapper {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 100vw;
+}
+
+.bookBg {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    transform: translateX(22%);
+    @media screen and (min-width: 1150px) {
+        transform: translateX(25%);
     }
 }
 
 .header__bg_pattern {
     position: absolute;
     width: 100%;
+    pointer-events: none;
     svg {
         height: 100vh;
         width: 100vw;
@@ -76,3 +119,4 @@
     }
 
 }
+
