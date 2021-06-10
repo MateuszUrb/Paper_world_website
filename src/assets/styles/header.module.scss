@@ -66,7 +66,6 @@
 .bookBg_wrapper {
     position: absolute;
     right: 0;
-    bottom: 0;
     overflow: hidden;
     width: 100vw;
 }
@@ -97,9 +96,19 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 22px;
+    position: relative;
+    z-index: 10;
     &__logo {
         width: 50px;
         height: 50px;
+        cursor: pointer;
+            g {
+                mask {
+                    path {
+                        stroke: red;
+                }
+            }
+        }
     }
     &__BtnGitHub {
         border-radius: 10px;
@@ -110,9 +119,7 @@
         width: 50px;
         height: 50px;
         filter: drop-shadow(0 24px 24px hsla(48, 72%, 54%, 0.32));
-        &:hover {
-            background-color: aqua;
-        }
+        cursor: pointer;
         svg {
             padding: .3rem;
         }

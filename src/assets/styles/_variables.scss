@@ -3,6 +3,7 @@ $primary-color-300: hsl(247, 27%, 62%);
 $primary-color-500: hsl(247, 27%, 32%);
 $primary-color-600: hsl(247, 27%, 12%);
 // form BG
+$form-bg-gradient: linear-gradient(180deg, rgba(46,42,70,1) 25%, rgba(37,33,59,1) 59%, rgba(29,26,46,1) 99%);
 $form-bg: hsla(248, 28%, 21%, 1);
 $form-shadow: hsla(248, 27%, 16%, 50%);
 
@@ -16,10 +17,13 @@ $cta-color-300: hsl(12, 98%, 69%);
 $cta-color-500: hsl(12, 98%, 49%);
 $cta-color-600: hsl(12, 98%, 25%);
 
+// button
+$button-primary:  hsl(39, 100%, 69%);
+
 /* cart background */
 $cart-color-300: hsl(248, 28%, 61%);
 $cart-color-500: hsl(248, 28%, 31%);
-$cart-color-600: hsl(248, 28%, 15%);
+$cart-color-600: hsl(246, 27%, 15%);
 
 /* gradient from top left to bottom right  */
 $gradient-color-1: $primary-color-500;

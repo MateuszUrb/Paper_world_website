@@ -1,9 +1,10 @@
 @import './variables';
 
 .bookForm {
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     background-color: $form-bg;
+    background: $form-bg-gradient;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,19 +15,41 @@
     &__input {
         border-radius: 5px;
         margin-right: 1rem;
-        height: 2rem;
-        border: 1px solid $primary-color-500;
+        padding-left: 5px;
+        height: 2.3rem;
+        width: 30%;
+        border: 2px solid $primary-color-500;
         font-family: $martel-regular-400;
+        @media screen and (max-width: 750px) {
+            width: 50%;
+        }
         &:focus {
             outline-color: $primary-color-500;
         }
+        &__error {
+        position: absolute;
+        bottom: 0;
+        transform: translateX(-50%);
+        font-family: $martel-light-300;
+        color: red;
+        }
     }
     &__button {
-        border-radius: 5px;
-        height: 2rem;
+        border-radius: 3px;
+        height: 2.3rem;
         border: none;
-        background-color: $cta-color-300;;
-        color: #fff;
+        padding: 0.6rem 2rem;
+        background-color: $button-primary;
+        letter-spacing: 2px;
+        color: $primary-color-600;
         font-size: $mobile_martelSemi_s;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform ease-in-out 0.2s;
+        &:hover {
+            transform: rotate(5deg);
+            transform-origin: bottom right;
+        }
+
     }
 }

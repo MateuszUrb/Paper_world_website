@@ -1,0 +1,54 @@
+@import './variables';
+
+.books_wraper {
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-bottom: 35rem;
+    @media screen and (max-width: 640px) {
+        margin-bottom: 23rem;
+
+    }
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    place-content: besline;
+    padding: 2rem;
+    color: #fff;
+    align-items: center;
+    cursor: pointer;
+    &_title {
+        max-width: 50%;
+        font-size: 1.1rem;
+        text-align: center;
+        font-family: $martel-regular-400;
+    }
+    &_img {
+        margin-bottom: 1rem;
+    }
+    &_author {
+        color: $secondary-color-300;
+        font-family: $martel-light-300;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        text-align: center;
+        line-height: 1.2rem;
+    }
+    &:hover {
+        background-color: $cart-color-600;
+        transition: background 0.3s ease-in;
+        border-radius: 5px;
+    }
+}
+
+.info__loading {
+    display: flex;
+    justify-content: center;
+}
+
+.info__error {
+    display: flex;
+    justify-content: center;
+}
