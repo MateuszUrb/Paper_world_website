@@ -20,18 +20,12 @@
         width: 30%;
         border: 2px solid $primary-color-500;
         font-family: $martel-regular-400;
+        font-weight: 600;
         @media screen and (max-width: 750px) {
             width: 50%;
         }
         &:focus {
             outline-color: $primary-color-500;
-        }
-        &__error {
-        position: absolute;
-        bottom: 0;
-        transform: translateX(-50%);
-        font-family: $martel-light-300;
-        color: red;
         }
     }
     &__button {

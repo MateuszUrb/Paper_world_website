@@ -5,7 +5,7 @@ import searchForm from '../assets/styles/bookSearchInput.module.scss';
 import BookResults from './BookResults';
 
 const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
-const API_URL = `https://www.googleapis.com/books/v1/volumess?`;
+const API_URL = `https://www.googleapis.com/books/v1/volumes?`;
 
 export default function BookSearchForm() {
   const [buttonPlaceHolder] = useState(
@@ -32,7 +32,6 @@ export default function BookSearchForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     refetch();
-    console.log(data);
   };
 
   return (
@@ -45,11 +44,12 @@ export default function BookSearchForm() {
           id="text"
           value={bookInput}
           onChange={handleInputChange}
-          placeholder={error ? 'Error' : buttonPlaceHolder}
+          placeholder={
+            error
+              ? 'Error: input must contain at lost one character'
+              : buttonPlaceHolder
+          }
         />
-        {error && (
-          <h4 className={searchForm.bookForm__input__error}>{error.message}</h4>
-        )}
         <button className={searchForm.bookForm__button} type="submit">
           Search
         </button>

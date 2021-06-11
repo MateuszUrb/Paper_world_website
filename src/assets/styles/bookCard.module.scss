@@ -51,4 +51,10 @@
 .info__error {
     display: flex;
     justify-content: center;
+    font-family: $martel-light-300;
+    font-weight: 400;
+    background-color: $err-Bg;
+    color: $err-font-color;
+    padding: 1rem;
+    border-radius: 5px;
 }
