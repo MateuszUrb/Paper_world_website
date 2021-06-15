@@ -5,7 +5,7 @@ import styled from '../assets/styles/bookCard.module.scss';
 export default function BookCard(props) {
   const { book } = props;
   // using this method of destructing because i have weird error while using destruction in function props
-  const bookImg = book?.volumeInfo?.imageLinks?.thumbnail;
+  const bookImg = book?.volumeInfo?.imageLinks?.thumbnail || '';
   const bookId = book?.id;
   const author = book?.volumeInfo?.authors;
   const title = book?.volumeInfo?.title;

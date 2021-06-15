@@ -102,11 +102,13 @@
         width: 50px;
         height: 50px;
         cursor: pointer;
+        &:hover {
+            transition: all 0.2s ease-in;
+            filter: drop-shadow(2px 6px 3px $primary-color-600);
+        }
             g {
-                mask {
                     path {
-                        stroke: red;
-                }
+                        stroke: $cta-color-300;
             }
         }
     }
@@ -122,6 +124,10 @@
         cursor: pointer;
         svg {
             padding: .3rem;
+        &:hover {
+            transition: transform 0.5s ease-in-out;
+            transform: rotate(360deg);
+            }
         }
     }
 

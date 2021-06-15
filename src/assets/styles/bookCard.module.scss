@@ -1,13 +1,46 @@
 @import './variables';
 
+@mixin default_Next_prev_buttons {
+    border-radius: 3px;
+    height: 2.3rem;
+    border: none;
+    padding: 0.6rem 2rem;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: $cta-color-300;
+}
+
 .books_wraper {
     display: grid;
+    position: relative;
     gap: 1.4rem;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin-bottom: 35rem;
     @media screen and (max-width: 640px) {
         margin-bottom: 23rem;
 
+    }
+    &_buttons {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        justify-content: space-between;
+        width: 100%;
+        transform: translateY(5rem);
+        &__prev {
+           @include default_Next_prev_buttons();
+        &__hidden {
+            visibility: hidden;
+        }
+        }
+        &__next {
+            @include default_Next_prev_buttons();
+        &__hidden {
+            visibility: hidden;
+        }
+        }
     }
 }
 
