@@ -3,7 +3,6 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import searchForm from '../assets/styles/bookSearchInput.module.scss';
 import BookResults from './BookResults';
-import Loading from './Loading';
 
 const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
 const API_URL = `https://www.googleapis.com/books/v1/volumes?`;
@@ -15,14 +14,18 @@ export default function BookSearchForm() {
   const [bookInput, setBookInput] = useState('');
   const [startIndex, setStartIndex] = useState(0);
   const [maxResults, setMaxResults] = useState(25);
+  const [category, setCategory] = useState({ value: 'intitle:' });
 
   const fetchBooks = async () => {
     const response = await axios(
-      `${API_URL}q=${bookInput}&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
+      `${API_URL}q=${category.value}"${bookInput}"&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
     );
+    if (!response.ok) {
+      throw new Error(`nothing was found with given input: ${bookInput}`);
+    }
     return response;
   };
-  const { data, isLoading, error, refetch } = useQuery(
+  const { data, isLoading, isFetching, error, refetch, isError } = useQuery(
     ['books', bookInput],
     fetchBooks,
     {
@@ -49,9 +52,27 @@ export default function BookSearchForm() {
     refetch();
   };
 
+  const handleSelectCategory = (e) => {
+    setCategory({ value: e.target.value });
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} className={searchForm.bookForm}>
+        <label htmlFor="select_category" className={searchForm.bookForm__label}>
+          select category:
+          <select
+            id="selectCategory"
+            value={category.value}
+            onChange={handleSelectCategory}
+            className={searchForm.bookForm__input_category}
+          >
+            <option value="intitle:">Title</option>
+            <option value="inauthor:">Author</option>
+            <option value="inpublisher:">publisher</option>
+            <option value="subject:">subject</option>
+          </select>
+        </label>
         <input
           className={searchForm.bookForm__input}
           type="text"
@@ -66,10 +87,12 @@ export default function BookSearchForm() {
           }
         />
         <button className={searchForm.bookForm__button} type="submit">
+          <span className={searchForm.bookForm__button_icon}>&#x1F50D;</span>
           Search
         </button>
       </form>
       <BookResults
+        isFetching={isFetching}
         startIndex={startIndex}
         maxResults={maxResults}
         handleLoadMoreResults={handleLoadMoreResults}
