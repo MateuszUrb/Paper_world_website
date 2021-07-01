@@ -1,33 +1,38 @@
 import './App.scss';
-// import { useQuery } from 'react-query';
-// import axios from 'axios';
+import mailgo, { MailgoConfig } from 'mailgo';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import BookSearchForm from './components/BookSearchForm';
-import BookResults from './components/BookResults';
 import Footer from './components/Footer';
+import Book from './components/BookDetails';
+import NotFound from './components/404.jsx';
 
-// const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
+const mailgoConfig: MailgoConfig = {
+  dark: true,
+};
 
-// axios.defaults.baseURL = `https://www.googleapis.com/books/v1/volumes?q=XQC&&key=${KEY}`;
-
-// const fetchBooks = async () => {
-//   const response = await axios();
-//   return response;
-// };
+const MainPage = () => (
+  <>
+    <Header />
+    <BookSearchForm />
+    <Footer />
+  </>
+);
 
 function App() {
-  // const { data, isLoading, error } = useQuery('books', fetchBooks);
+  useEffect(() => {
+    mailgo(mailgoConfig);
+  }, []);
   return (
     <>
-      <Header />
-      <BookSearchForm />
-      <Footer />
-      {/* <BookResults
-        booksData={data}
-        isLoading={isLoading}
-        error={error}
-        title="Recommendation"
-      /> */}
+      <Router>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/book/:id" component={Book} />
+          <Route component={NotFound} />
+        </Switch>
+      </Router>
     </>
   );
 }

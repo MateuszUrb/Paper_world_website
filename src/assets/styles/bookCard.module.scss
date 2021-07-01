@@ -44,6 +44,10 @@
     }
 }
 
+.book_link {
+    text-decoration: none;
+}
+
 .book {
     display: flex;
     flex-direction: column;
@@ -83,11 +87,25 @@
 
 .info__error {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
     font-family: $martel-light-300;
-    font-weight: 400;
     background-color: $err-Bg;
     color: $err-font-color;
     padding: 1rem;
     border-radius: 5px;
+    &_msg {
+        font-size: clamp($mobile_martelSemi_xs, 2vw, $desktop_header);
+        font-weight: 400;
+        max-width: 90%;
+    }
+    &_closeBtn {
+        position: absolute;
+        top: 0.5rem;
+        cursor: pointer;
+        font-size: 2rem;
+        right: 0.5rem;
+    }
+
 }
+

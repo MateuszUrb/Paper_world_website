@@ -16,7 +16,6 @@
         }
         &__about {
             font-family: $martel-semibold-600;
-            // font-size: $mobile_martelSemi_xs;
             font-size: clamp($mobile_martelSemi_xs, 5vw, $desktop_header);
             line-height: 26px;
             width: 67%;
@@ -111,6 +110,7 @@
                         stroke: $cta-color-300;
             }
         }
+
     }
     &__BtnGitHub {
         border-radius: 10px;
@@ -132,4 +132,3 @@
     }
 
 }
-

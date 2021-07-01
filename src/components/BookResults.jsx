@@ -1,5 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import bookResults from '../assets/styles/bookResultsSection.module.scss';
 import { ReactComponent as ResultSVG } from '../assets/images/result_svg.svg';
 import wrapper from '../assets/styles/contentWrapper.module.scss';
@@ -61,14 +62,13 @@ const BookResults = (props) => {
           </header>
           {isLoading && <Loading />}
           <div />
-          {error && (
-            <h2 className={styled.info__error}>
-              An error has occurred: {error.message}
-            </h2>
-          )}
+
+          {error && <ErrorMsg error={error} />}
           <div className={styled.books_wraper}>
             {data?.data?.items.map((book) => (
-              <BookCard book={book} />
+              <Link to={`/book/${book.id}`} className={styled.book_link}>
+                <BookCard book={book} />
+              </Link>
             ))}
             {data && (
               <div className={styled.books_wraper_buttons}>
@@ -100,6 +100,13 @@ const BookResults = (props) => {
   );
 };
 
+export const ErrorMsg = ({ error }) => (
+  <div className={styled.info__error}>
+    <h2 className={styled.info__error_msg}>
+      An error has occurred: {error.message}
+    </h2>
+  </div>
+);
 BookResults.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.bool,
@@ -109,6 +116,10 @@ BookResults.propTypes = {
   maxResults: PropTypes.number,
   handleLoadMoreResults: PropTypes.func,
   handleLoadPrevResults: PropTypes.func,
+};
+
+ErrorMsg.propTypes = {
+  error: PropTypes.string,
 };
 
 export default BookResults;

@@ -1,10 +1,11 @@
+import { Route, BrowserRouter as Router, Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../assets/images/Logo.svg';
 import { ReactComponent as GithubIcon } from '../assets/images/github-square.svg';
-// import { ReactComponent as BgPatternMobile } from '../assets/images/Mobile_bg_patterns.svg';
 import { ReactComponent as BgPatternDesktop } from '../assets/images/Desktop_bg_pattern.svg';
 import Book from '../assets/images/book.webp';
 import { ReactComponent as BookBackground } from '../assets/images/book_wave.svg';
 import headerStyles from '../assets/styles/header.module.scss';
+
 import wrapper from '../assets/styles/contentWrapper.module.scss';
 
 function Header() {
@@ -29,12 +30,23 @@ const HeaderBGPattern = () => (
 );
 
 const Nav = () => (
-  <nav className={`${wrapper.container} ${headerStyles.nav}`}>
-    <Logo className={headerStyles.nav__logo} />
-    <div type="button" className={headerStyles.nav__BtnGitHub}>
-      <GithubIcon />
-    </div>
-  </nav>
+  <Router>
+    <nav className={`${wrapper.container} ${headerStyles.nav}`}>
+      <Link to="/">
+        <Logo className={headerStyles.nav__logo} />
+      </Link>
+      <Link
+        to={{
+          pathname: 'https://github.com/MateuszUrb',
+        }}
+        target="_blank"
+      >
+        <div type="button" className={headerStyles.nav__BtnGitHub}>
+          <GithubIcon />
+        </div>
+      </Link>
+    </nav>
+  </Router>
 );
 
 const Content = () => (

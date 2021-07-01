@@ -4,8 +4,8 @@ import axios from 'axios';
 import searchForm from '../assets/styles/bookSearchInput.module.scss';
 import BookResults from './BookResults';
 
-const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
-const API_URL = `https://www.googleapis.com/books/v1/volumes?`;
+export const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
+export const API_URL = `https://www.googleapis.com/books/v1/volumes?`;
 
 export default function BookSearchForm() {
   const [buttonPlaceHolder] = useState(
@@ -17,15 +17,15 @@ export default function BookSearchForm() {
   const [category, setCategory] = useState({ value: 'intitle:' });
 
   const fetchBooks = async () => {
-    const response = await axios(
+    const response = await axios.get(
       `${API_URL}q=${category.value}"${bookInput}"&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
     );
-    if (!response.ok) {
-      throw new Error(`nothing was found with given input: ${bookInput}`);
+    if (bookInput.length <= 0) {
+      throw new Error('input must contain at least one character');
     }
     return response;
   };
-  const { data, isLoading, isFetching, error, refetch, isError } = useQuery(
+  const { data, isLoading, isFetching, error, refetch } = useQuery(
     ['books', bookInput],
     fetchBooks,
     {
