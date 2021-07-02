@@ -13,7 +13,7 @@ const Footer = () => (
           className={`${containerWrapper.container} ${styleFooter.footer__content}`}
         >
           <ul className={styleFooter.footer__linkList}>
-            <li>
+            <li className={styleFooter.footer__linkList_link}>
               <Link
                 to={{
                   pathname: 'https://www.facebook.com/mateusz.urban.353',
@@ -23,7 +23,7 @@ const Footer = () => (
                 <img src={FbIcon} alt="facebook icon" />
               </Link>
             </li>
-            <li>
+            <li className={styleFooter.footer__linkList_link}>
               <Link
                 to={{
                   pathname: 'https://twitter.com/M_Urban98',
@@ -33,7 +33,7 @@ const Footer = () => (
                 <img src={TwitterIcon} alt="twitter icon" />
               </Link>
             </li>
-            <li>
+            <li className={styleFooter.footer__linkList_link}>
               <a
                 className="App-link"
                 href="mailto:98m.urban@gmail.com"
@@ -45,7 +45,7 @@ const Footer = () => (
             </li>
           </ul>
           <p className={styleFooter.footer__creator}>
-            created and designed by Mateusz
+            created and designed by Mateusz <span>&hearts;</span>
           </p>
           <p className={styleFooter.footer__copyright}>
             <i className="fas fa-copyright" />
