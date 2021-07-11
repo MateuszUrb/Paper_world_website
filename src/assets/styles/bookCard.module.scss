@@ -10,12 +10,17 @@
     cursor: pointer;
     font-weight: 600;
     background-color: $cta-color-300;
+    transition: transform 0.3s;
+    &:hover {
+        transform: translate(-3px, -3px);
+    }
 }
 
 .books_wraper {
     display: grid;
     position: relative;
     gap: 1.4rem;
+    align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin-bottom: 35rem;
     @media screen and (max-width: 640px) {
@@ -41,6 +46,9 @@
             visibility: hidden;
         }
         }
+        &__arrows {
+            color: $primary-color-600;
+        }
     }
 }
 
@@ -51,7 +59,7 @@
 .book {
     display: flex;
     flex-direction: column;
-    place-content: besline;
+    place-content: baseline;
     padding: 2rem;
     color: #fff;
     align-items: center;
@@ -64,6 +72,11 @@
     }
     &_img {
         margin-bottom: 1rem;
+        max-width: 128px;
+        min-height: 190px;
+        text-align: center;
+        color: $secondary-color-300;
+        background-color: $primary-color-600;
     }
     &_author {
         color: $secondary-color-300;
@@ -75,8 +88,12 @@
     }
     &:hover {
         background-color: $cart-color-600;
-        transition: background 0.3s ease-in;
+        transition: background-color 0.3s ease-in;
         border-radius: 5px;
+        > img {
+                filter: drop-shadow(7px 6px 4px rgba(224, 194, 0, 0.4))
+
+        }
     }
 }
 

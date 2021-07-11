@@ -54,7 +54,7 @@
         position: absolute;
         bottom: 0;
         margin-right: calc(26vw - 20%);
-        transform: rotate(5.81deg) scale(0.9) translate(37%, 5%);
+        transform: rotate(5.81deg) scale(0.9) translate(37%, 5%), ;
         @media screen and (min-width:710px) {
             transform: rotate(0) scale(0.9) translate(27%, 10%);
 

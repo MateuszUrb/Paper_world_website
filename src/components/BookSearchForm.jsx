@@ -23,6 +23,9 @@ export default function BookSearchForm() {
     if (bookInput.length <= 0) {
       throw new Error('input must contain at least one character');
     }
+    if (response.data.totalItems <= 0) {
+      throw new Error(`nothing was found with given word: ${bookInput}`);
+    }
     return response;
   };
   const { data, isLoading, isFetching, error, refetch } = useQuery(
@@ -55,7 +58,6 @@ export default function BookSearchForm() {
   const handleSelectCategory = (e) => {
     setCategory({ value: e.target.value });
   };
-
   return (
     <>
       <form onSubmit={handleSubmit} className={searchForm.bookForm}>
@@ -101,6 +103,7 @@ export default function BookSearchForm() {
         data={data}
         title={bookInput}
         error={error}
+        key={1}
       />
     </>
   );

@@ -14,10 +14,14 @@ export default function BookCard(props) {
       <img
         className={styled.book_img}
         src={bookImg !== undefined ? bookImg : 'img not available'}
-        alt={title && bookImg === undefined ? 'image not available' : title}
+        alt={
+          title && bookImg === undefined
+            ? 'image not available'
+            : `image not found ${title}`
+        }
       />
-      <h2 className={styled.book_title}>{title}</h2>
-      <h3 className={styled.book_author}>{author}</h3>
+      <h2 className={styled.book_title}>{title || 'not found'}</h2>
+      <h3 className={styled.book_author}>{author || 'not found'}</h3>
     </div>
   );
 }

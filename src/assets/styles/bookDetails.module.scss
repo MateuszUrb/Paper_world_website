@@ -1,4 +1,11 @@
 @import './variables';
+@import './bookSearchInput.module.scss';
+
+@mixin bookInfoStyle {
+    font-family: $martel-light-300;
+    font-weight: 600;
+    color: $cta-color-300;
+}
 
 .details_container {
     height: fit-content;
@@ -7,6 +14,7 @@
     background-color: $primary-color-500;
     position: relative;
     overflow: hidden;
+
     svg {
         width: 100%;
         position: absolute;
@@ -16,21 +24,161 @@
 }
 
 .nav {
-      height: 6rem;
+    height: 6rem;
     display: flex;
     justify-content: flex-start;
-    align-items: baseline;
+    align-items: center;
     padding-top: 22px;
     position: relative;
     z-index: 10;
-        &__logo {
-            width: 50px!important;
-            height: 50px!important;
-            cursor: pointer;
-            &:hover {
-                transition: all 0.2s ease-in;
-                filter: drop-shadow(2px 6px 3px $primary-color-600);
+
+    &__logo {
+        width: 50px !important;
+        height: 50px !important;
+        cursor: pointer;
+
+        &:hover {
+            transition: all 0.2s ease-in;
+            filter: drop-shadow(2px 6px 3px $primary-color-600);
 
         }
+    }
 }
+
+.bookDetails__wrapper {
+    margin-top: 7rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 0.8fr 1.2fr 1fr 1fr;
+    grid-template-rows: 0.4fr 0.4fr 0.7fr 2.5fr;
+    gap: 25px 25px;
+    grid-template-areas:
+      "img img title title title"
+      "img img author author author"
+      "img img book-info book-info book-info"
+      "img img desc desc desc";
+
+    @media screen and (max-width:640px) {
+        gap: 0px 0px;
+        grid-template-areas:
+            "title title title title title"
+            "author author author author author"
+            "published published page-count page-count book-info"
+            "desc desc desc desc desc";
+    }
+}
+
+.bookDetails__wrapper_img {
+    justify-self: center;
+    align-self: start;
+    grid-area: img;
+    width: 70%;
+}
+
+.bookDetails__img {
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.bookDetails__wrapper_title {
+    justify-self: start;
+    align-self: stretch;
+    grid-area: title;
+    width: 100%;
+    font-family: $martel-semibold-600;
+         font-size: clamp($mobile_martelSemi_xs, 1.2vw, $desktop_header);
+
+}
+
+.bookDetails__wrapper_author {
+    justify-self: stretch;
+    align-self: stretch;
+    grid-area: author;
+    font-family: $martel-semibold-600;
+
+}
+
+.bookDetails__wrapper_bookInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 25px;
+    grid-template-areas:
+    "published page-count categories"
+    "published page-count categories"
+    "published page-count categories";
+  grid-area: book-info;
+}
+
+.bookDetails__wrapper_publishedDate {
+    grid-area: published;
+    @include bookInfoStyle()
+
+}
+
+.bookDetails__wrapper_pageCount {
+    grid-area: page-count;
+    @include bookInfoStyle()
+}
+
+.bookDetails__wrapper__category {
+    grid-area: category;
+    @include bookInfoStyle()
+
+}
+
+.bookDetails__wrapper_category {
+    grid-area: categories;
+    @include bookInfoStyle()
+
+}
+
+.bookDetails__wrapper_description {
+    grid-area: desc;
+    font-family: $martel-regular-400;
+    font-weight: 400;
+    max-width: 75ch;
+    background-color: $cart-color-600;
+    color: hsl(48, 100%, 62%);
+    padding: 30px 5px;
+    border-radius: 5px
+}
+
+.read__book {
+    @include button;
+    margin: 20px 0;
+    width: fit-content;
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-family: inherit;
+        font-family: $martel-light-300;
+    }
+}
+
+.book_separator {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $cta-color-300;
+}
+
+.similarBooks {
+    margin-top: 4rem;
+    width: 100%;
+    min-height: 100vh;
+    &__title {
+        color: $cta-color-300;
+        font-family: $martel-regular-400;
+    }
+    &__results {
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        margin: 5rem 0 35rem 0;
+        gap: 1.4rem;
+        &_book {
+            text-decoration: none;
+        }
+    }
 }

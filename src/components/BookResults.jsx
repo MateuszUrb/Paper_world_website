@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Route, Router, Switch } from 'react-router-dom';
 import bookResults from '../assets/styles/bookResultsSection.module.scss';
 import { ReactComponent as ResultSVG } from '../assets/images/result_svg.svg';
 import wrapper from '../assets/styles/contentWrapper.module.scss';
@@ -46,6 +46,7 @@ const BookResults = (props) => {
     startIndex >= bookCount
       ? styled.books_wraper_buttons__next__hidden
       : styled.books_wraper_buttons__next;
+
   return (
     <>
       <main ref={scrollToTopResults} className={bookResults.results__container}>
@@ -77,6 +78,9 @@ const BookResults = (props) => {
                   className={isFirstPage}
                   type="button"
                 >
+                  <span className={styled.books_wraper_buttons__arrows}>
+                    &#171;
+                  </span>
                   Previous
                 </button>
                 {startIndex <= bookCount && (
@@ -86,6 +90,9 @@ const BookResults = (props) => {
                     type="button"
                   >
                     Next
+                    <span className={styled.books_wraper_buttons__arrows}>
+                      &#187;
+                    </span>
                   </button>
                 )}
               </div>
