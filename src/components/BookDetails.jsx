@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { KEY } from './BookSearchForm';
 import Footer from './Footer';
 import Loading from './Loading';
 import BookCard from './BookCard';
+import { ErrorMsg } from './BookResults';
 
 // styles
 import { ReactComponent as ResultSVG } from '../assets/images/result_svg.svg';
@@ -19,6 +20,7 @@ import detailsStyle from '../assets/styles/bookDetails.module.scss';
 const Book = ({ match }) => {
   const [subjectBooks, setSubjectBooks] = useState();
   const [fetchedSubject, setFetchedSubject] = useState();
+  const scrollToTopResults = useRef(null);
 
   const fetchBookDetail = async () => {
     const response = await axios.get(
@@ -30,8 +32,8 @@ const Book = ({ match }) => {
     return response;
   };
 
-  const { data, isLoading } = useQuery(['books'], fetchBookDetail);
-
+  const { data, isLoading, error } = useQuery(['books'], fetchBookDetail);
+  console.log(`error: ${error}`);
   // ok sorry for this mess ok? don't be mad to whoever will look at this  please
   // ?i got problem with destructing google api object, so I choose this instead
   // not the best idea, but hey... it works :grin:
@@ -57,26 +59,39 @@ const Book = ({ match }) => {
     win.focus();
   };
 
+  const scrollToTopBookResults = () => {
+    scrollToTopResults.current.scrollIntoView();
+  };
+
   const handleSubjectName = () => {
     if (categories) {
       const subjectName = categories[0].split(' ')[0];
       setFetchedSubject(subjectName);
-    } else {
-      setFetchedSubject('recommended');
+    } else if (categories === undefined) {
+      setFetchedSubject(title);
     }
   };
   useEffect(() => {
     handleSubjectName();
+  });
+
+  useEffect(() => {
+    scrollToTopBookResults();
   }, []);
+  const ifCategoryExist = categories !== undefined ? 'subject' : '';
 
   const fetchSimilarBooks = async () => {
-    const subjectData = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=${fetchedSubject}&maxResults=9&key=${KEY}`
-    );
-    if (subjectData.data === null) {
-      throw new Error(`sorry error`);
-    } else {
-      setSubjectBooks(subjectData);
+    try {
+      const subjectData = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=${fetchedSubject}+${ifCategoryExist}&maxResults=12&key=${KEY}`
+      );
+      if (subjectData.data === null) {
+        throw new Error(`sorry error`);
+      } else {
+        setSubjectBooks(subjectData);
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
   useEffect(() => {
@@ -85,7 +100,7 @@ const Book = ({ match }) => {
 
   return (
     <>
-      <main className={detailsStyle.details_container}>
+      <main ref={scrollToTopResults} className={detailsStyle.details_container}>
         <nav className={`${wrapper.container} ${detailsStyle.nav}`}>
           <Link to="/" className={detailsStyle.nav__logo}>
             <Logo className={detailsStyle.nav__logo} />
@@ -94,6 +109,7 @@ const Book = ({ match }) => {
         <ResultSVG />
         <div className={wrapper.container}>
           {isLoading && <Loading />}
+          {error && <ErrorMsg error={error} />}
           <div className={detailsStyle.bookDetails__wrapper}>
             {data && (
               <>
@@ -125,12 +141,12 @@ const Book = ({ match }) => {
                     className={detailsStyle.bookDetails__wrapper_publishedDate}
                   >
                     <p className={detailsStyle.bookDetails__publishedDate}>
-                      Data premiery: {publishedDate}
+                      Premiere date: {publishedDate}
                     </p>
                   </div>
                   <div className={detailsStyle.bookDetails__wrapper_pageCount}>
                     <p className={detailsStyle.bookDetails__pageCount}>
-                      liczba stron: {pageCount}
+                      Page count: {pageCount}
                     </p>
                   </div>
                   <div className={detailsStyle.bookDetails__wrapper_category}>
@@ -163,7 +179,7 @@ const Book = ({ match }) => {
           )}
 
           {data && <div className={detailsStyle.book_separator} />}
-          {data ? (
+          {data && (
             <div className={detailsStyle.similarBooks}>
               <h1 className={detailsStyle.similarBooks__title}>
                 Similar books :
@@ -179,8 +195,6 @@ const Book = ({ match }) => {
                 ))}
               </div>
             </div>
-          ) : (
-            <Loading />
           )}
         </div>
 

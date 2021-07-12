@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Link, Route, Router, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import bookResults from '../assets/styles/bookResultsSection.module.scss';
 import { ReactComponent as ResultSVG } from '../assets/images/result_svg.svg';
 import wrapper from '../assets/styles/contentWrapper.module.scss';
@@ -67,7 +67,11 @@ const BookResults = (props) => {
           {error && <ErrorMsg error={error} />}
           <div className={styled.books_wraper}>
             {data?.data?.items.map((book) => (
-              <Link to={`/book/${book.id}`} className={styled.book_link}>
+              <Link
+                key={book.id}
+                to={`/book/${book.id}`}
+                className={styled.book_link}
+              >
                 <BookCard book={book} />
               </Link>
             ))}
