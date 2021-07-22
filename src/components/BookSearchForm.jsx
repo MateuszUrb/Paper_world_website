@@ -1,19 +1,24 @@
 import { useState } from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import searchForm from '../assets/styles/bookSearchInput.module.scss';
+import { toast } from 'react-toastify';
 import BookResults from './BookResults';
+
+// style
+import searchForm from '../assets/styles/bookSearchInput.module.scss';
 
 export const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
 export const API_URL = `https://www.googleapis.com/books/v1/volumes?`;
+
+toast.configure();
 
 export default function BookSearchForm() {
   const [buttonPlaceHolder] = useState(
     `Search for Books: 'Harry Potter...' etc`
   );
   const [bookInput, setBookInput] = useState('');
-  const [startIndex, setStartIndex] = useState(0);
-  const [maxResults, setMaxResults] = useState(25);
+  const [startIndex, setStartIndex] = useState(28);
+  const [maxResults, setMaxResults] = useState(28);
   const [category, setCategory] = useState({ value: 'intitle:' });
 
   const fetchBooks = async () => {
@@ -21,9 +26,17 @@ export default function BookSearchForm() {
       `${API_URL}q=${category.value}"${bookInput}"&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
     );
     if (bookInput.length <= 0) {
+      toast('🚨 input must contain at least one character 🚨', {
+        type: 'warning',
+        autoClose: 8000,
+      });
       throw new Error('input must contain at least one character');
     }
     if (response.data.totalItems <= 0) {
+      toast(`⛔ nothing was found with given word: ${bookInput}`, {
+        type: 'error',
+        autoClose: 8000,
+      });
       throw new Error(`nothing was found with given word: ${bookInput}`);
     }
     return response;
@@ -33,6 +46,7 @@ export default function BookSearchForm() {
     fetchBooks,
     {
       enabled: false,
+      retry: false,
     }
   );
 
@@ -58,6 +72,7 @@ export default function BookSearchForm() {
   const handleSelectCategory = (e) => {
     setCategory({ value: e.target.value });
   };
+
   return (
     <>
       <form onSubmit={handleSubmit} className={searchForm.bookForm}>
@@ -76,7 +91,11 @@ export default function BookSearchForm() {
           </select>
         </label>
         <input
-          className={searchForm.bookForm__input}
+          className={
+            error
+              ? searchForm.bookForm__input_error
+              : searchForm.bookForm__input
+          }
           type="text"
           name="text"
           id="text"

@@ -1,5 +1,19 @@
 @import  './variables';
 
+@mixin goHomeButton {
+     color: hsl(255, 255, 255);
+        text-decoration: none;
+        font-family: $martel-semibold-600;
+        border: 1px solid #fff;
+        padding: 10px 20px;
+        transition: color 0.2s ease-in-out, background-color 0.2s;
+        font-weight: 600;
+        &:hover {
+            color: $primary-color-300;
+            background-color: #fff;
+        }
+}
+
 .pageNotFound {
     display: flex;
     flex-wrap: wrap;
@@ -49,17 +63,6 @@
         }
     }
     &__backToHome_Link {
-        color: hsl(255, 255, 255);
-        text-decoration: none;
-        font-family: $martel-semibold-600;
-        border: 1px solid #fff;
-        padding: 10px 20px;
-        transition: color 0.2s ease-in-out, background-color 0.2s;
-        font-weight: 600;
-        &:hover {
-            color: $primary-color-300;
-            background-color: #fff;
-        }
+       @include goHomeButton();
     }
 }
-

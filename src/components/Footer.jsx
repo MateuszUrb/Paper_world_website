@@ -45,7 +45,16 @@ const Footer = () => (
             </li>
           </ul>
           <p className={styleFooter.footer__creator}>
-            created and designed by Mateusz <span>&hearts;</span>
+            created and designed by
+            <Link
+              to={{
+                pathname: 'https://github.com/MateuszUrb',
+              }}
+              target="_blank"
+            >
+              Me
+            </Link>{' '}
+            <span>&hearts;</span>
           </p>
           <p className={styleFooter.footer__copyright}>
             <i className="fas fa-copyright" />

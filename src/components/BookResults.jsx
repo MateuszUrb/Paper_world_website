@@ -1,12 +1,14 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import bookResults from '../assets/styles/bookResultsSection.module.scss';
-import { ReactComponent as ResultSVG } from '../assets/images/result_svg.svg';
-import wrapper from '../assets/styles/contentWrapper.module.scss';
-import footerWaves from '../assets/images/footerWaves.webp';
 import BookCard from './BookCard';
 import Loading from './Loading';
+
+// style/graphic
+import { ReactComponent as ResultSVG } from '../assets/images/result_svg.svg';
+import bookResults from '../assets/styles/bookResultsSection.module.scss';
+import footerWaves from '../assets/images/footerWaves.webp';
+import wrapper from '../assets/styles/contentWrapper.module.scss';
 import styled from '../assets/styles/bookCard.module.scss';
 
 const BookResults = (props) => {
@@ -64,7 +66,6 @@ const BookResults = (props) => {
           {isLoading && <Loading />}
           <div />
 
-          {error && <ErrorMsg error={error} />}
           <div className={styled.books_wraper}>
             {data?.data?.items.map((book) => (
               <Link
@@ -111,13 +112,6 @@ const BookResults = (props) => {
   );
 };
 
-export const ErrorMsg = ({ error }) => (
-  <div className={styled.info__error}>
-    <h2 className={styled.info__error_msg}>
-      An error has occurred: {error.message}
-    </h2>
-  </div>
-);
 BookResults.propTypes = {
   isLoading: PropTypes.bool,
   error: PropTypes.bool,
@@ -127,10 +121,6 @@ BookResults.propTypes = {
   maxResults: PropTypes.number,
   handleLoadMoreResults: PropTypes.func,
   handleLoadPrevResults: PropTypes.func,
-};
-
-ErrorMsg.propTypes = {
-  error: PropTypes.string,
 };
 
 export default BookResults;

@@ -10,9 +10,6 @@
         display: flex;
         color: $secondary-color-500;
         height: 97%;
-        /* flex-wrap: wrap; */
-        /* align-content: space-around; */
-        /* justify-content: space-around; */
         display: grid;
         grid-template-columns: auto 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -48,6 +45,11 @@
         }
         span {
             font-size: 1.5rem;
+        }
+        a {
+            text-decoration: none;
+            color: $secondary-color-300;
+            margin-left: 5px;
         }
     }
     &__copyright {

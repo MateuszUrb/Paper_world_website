@@ -64,6 +64,13 @@
         width: fit-content;
         margin-right: 0.2rem;
         }
+        &_error {
+            @include bookInput();
+             border: 2px solid $err-font-color;
+             &:focus {
+                 outline-color: $err-font-color;
+             }
+        }
     }
     &__button {
         @include button
