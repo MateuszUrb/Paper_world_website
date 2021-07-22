@@ -87,16 +87,28 @@
         line-height: 1.2rem;
     }
     &:hover {
-        background-color: $cart-color-600;
+        background-color: lighten(rgba(30, 28, 49, 0.80), 10);
         transition: background-color 0.3s ease-in, transform 0.3s;
         transform: translate(5px, -5px);
         > img {
-        border-radius: 5px;
-            filter: drop-shadow(7px 6px 4px rgba(224, 194, 0, 0.4))
+            transition: transform 0.3s;
+            animation: book_shadow 1s forwards;
+            transform: translate(5px, -5px);
 
         }
     }
 }
+
+@keyframes book_shadow {
+    from {
+        box-shadow: none;
+    } to {
+        box-shadow: -5px 5px 0px lighten($primary-color-500, 30);
+    }
+}
+
+
+
 
 .info__loading {
     display: flex;
