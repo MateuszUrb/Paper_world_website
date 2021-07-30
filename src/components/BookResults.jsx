@@ -17,6 +17,7 @@ const BookResults = (props) => {
     title,
     error,
     isLoading,
+    isFetching,
     startIndex,
     maxResults,
     handleLoadMoreResults,
@@ -49,6 +50,7 @@ const BookResults = (props) => {
       ? styled.books_wraper_buttons__next__hidden
       : styled.books_wraper_buttons__next;
 
+  const booksFetching = !isFetching ? styled.show_books : styled.hide_books;
   return (
     <>
       <main ref={scrollToTopResults} className={bookResults.results__container}>
@@ -68,13 +70,15 @@ const BookResults = (props) => {
 
           <div className={styled.books_wraper}>
             {data?.data?.items.map((book) => (
-              <Link
-                key={book.id}
-                to={`/book/${book.id}`}
-                className={styled.book_link}
-              >
-                <BookCard book={book} />
-              </Link>
+              <div className={booksFetching}>
+                <Link
+                  key={book.id}
+                  to={`/book/${book.id}`}
+                  className={styled.book_link}
+                >
+                  <BookCard book={book} />
+                </Link>
+              </div>
             ))}
             {data && (
               <div className={styled.books_wraper_buttons}>
@@ -117,6 +121,7 @@ BookResults.propTypes = {
   error: PropTypes.bool,
   title: PropTypes.string.isRequired,
   data: PropTypes.object,
+  isFetching: PropTypes.bool,
   startIndex: PropTypes.number,
   maxResults: PropTypes.number,
   handleLoadMoreResults: PropTypes.func,

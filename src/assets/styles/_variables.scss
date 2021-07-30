@@ -2,6 +2,10 @@
 $primary-color-300: hsl(247, 27%, 62%);
 $primary-color-500: hsl(247, 27%, 32%);
 $primary-color-600: hsl(247, 27%, 12%);
+
+// text color
+$primary-text: hsl(210deg, 11%, 85%);
+
 // form BG
 $form-bg-gradient: linear-gradient(180deg, rgba(46,42,70,1) 25%, rgba(37,33,59,1) 59%, rgba(29,26,46,1) 99%);
 $form-bg: hsla(248, 28%, 21%, 1);
@@ -49,3 +53,25 @@ $mobile_book_description: 0.5rem;
 // desktop
 $desktop_header: 2.8rem;
 $desktop_header_paragraph: 1.8rem;
+
+
+// buttons animation
+
+@keyframes buttonIn  {
+    from {
+        box-shadow: 0 0 $primary-color-300
+    }
+    to {
+        box-shadow: -5px 5px $primary-color-300
+
+    }
+}
+
+@keyframes buttonOut {
+    from {
+        box-shadow: -5px 5px $primary-color-300
+    }
+    to {
+        box-shadow: 0 0 $primary-color-300
+    }
+}

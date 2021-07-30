@@ -21,6 +21,7 @@
     position: relative;
     gap: 1.4rem;
     align-items: center;
+    justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     margin-bottom: 35rem;
     @media screen and (max-width: 640px) {
@@ -35,16 +36,22 @@
         width: 100%;
         transform: translateY(5rem);
         &__prev {
-           @include default_Next_prev_buttons();
+            @include default_Next_prev_buttons();
+            &:hover {
+                animation: buttonIn 1s forwards;
+            }
         &__hidden {
             visibility: hidden;
         }
         }
         &__next {
             @include default_Next_prev_buttons();
-        &__hidden {
-            visibility: hidden;
-        }
+            &:hover {
+                animation: buttonIn 1s forwards;
+            }
+            &__hidden {
+                visibility: hidden;
+            }
         }
         &__arrows {
             color: $primary-color-600;
@@ -56,19 +63,44 @@
     text-decoration: none;
 }
 
+.show_books {
+    animation: show_books 1s ease-in forwards;
+}
+
+.hide_books {
+    animation: hide_books 1s ease-in forwards;
+}
+
 .book {
     display: flex;
     flex-direction: column;
-    place-content: baseline;
+    place-content: center;
     padding: 2rem;
-    color: #fff;
+    color: $primary-text;
     align-items: center;
     cursor: pointer;
     &_title {
-        max-width: 50%;
         font-size: 1.1rem;
         text-align: center;
         font-family: $martel-regular-400;
+        font-weight: 400;
+         @media screen and (max-width: 640px) {
+            font-weight: 400;
+            font-size: 14px;
+            text-align: start;
+        }
+    }
+    &_text {
+        @media screen and (max-width: 640px) {
+            overflow-y: scroll;
+            overflow-wrap: break-word;
+            margin-left: 1rem;
+            flex-direction: column;
+            display: flex;
+            height: 190px;
+            width: 50%;
+            justify-content: space-between;
+        }
     }
     &_img {
         margin-bottom: 1rem;
@@ -85,6 +117,13 @@
         margin-top: 1rem;
         text-align: center;
         line-height: 1.2rem;
+        @media screen and (max-width: 640px) {
+            font-weight: 400;
+            font-size: 13px;
+            text-align: start;
+            height: 9rem;
+            justify-self: start;
+        }
     }
     &:hover {
         background-color: lighten(rgba(30, 28, 49, 0.80), 10);
@@ -97,6 +136,10 @@
 
         }
     }
+    @media  screen and (max-width: 640px) {
+        flex-direction: row;
+        padding: 2rem 0 2remt;
+    }
 }
 
 @keyframes book_shadow {
@@ -107,6 +150,23 @@
     }
 }
 
+@keyframes show_books {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hide_books {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 
 
 
