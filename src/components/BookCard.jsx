@@ -20,8 +20,10 @@ export default function BookCard(props) {
             : `image not found ${title}`
         }
       />
-      <h2 className={styled.book_title}>{title || 'not found'}</h2>
-      <h3 className={styled.book_author}>{author || 'not found'}</h3>
+      <div className={styled.book_text}>
+        <h2 className={styled.book_title}>{title || 'not found'}</h2>
+        <h3 className={styled.book_author}>{author || 'not found'}</h3>
+      </div>
     </div>
   );
 }
