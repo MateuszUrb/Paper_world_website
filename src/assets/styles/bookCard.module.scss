@@ -8,7 +8,7 @@
     letter-spacing: 2px;
     font-size: 0.9rem;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 400;
     background-color: $cta-color-300;
     transition: transform 0.3s;
     &:hover {
@@ -68,7 +68,7 @@
 }
 
 .hide_books {
-    animation: hide_books 1s ease-in forwards;
+    animation: hide_books 0.5s ease-in-out forwards;
 }
 
 .book {

@@ -22,6 +22,16 @@
         font-size: $mobile_martelSemi_s;
         cursor: pointer;
         font-weight: 600;
+        transform: translateX(-5px);
+        transition: all 0.6s;
+        &:hover {
+            box-shadow: -5px 5px $primary-color-300,
+                    -4px 4px $primary-color-300,
+                    -3px 3px $primary-color-300,
+                    -2px 2px $primary-color-300,
+                    -1px 1px $primary-color-300,
+                    0 0 $primary-color-300,
+        }
 }
 
 .bookForm {
@@ -47,14 +57,15 @@
         @media screen and (max-width: 552px) {
             width: 100%;
             display: flex;
-            justify-content: centerbpn;
+            justify-content: center;
             align-items: center;
         }
     }
     &__input {
         @include bookInput();
+        flex-shrink: 1;
         @media screen and (max-width: 750px) {
-            width: 50%;
+            flex-basis: 50%;
         }
         &:focus {
             outline-color: $primary-color-500;
@@ -73,9 +84,13 @@
         }
     }
     &__button {
-        @include button
+        @include button();
+        padding: 0.6rem 1rem 0.6rem 1rem;
         &_icon {
             margin-right: 1rem;
+            @media screen and (max-width: 640px) {
+                display: none;
+            }
         }
 
     }

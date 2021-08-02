@@ -60,9 +60,15 @@ $desktop_header_paragraph: 1.8rem;
 @keyframes buttonIn  {
     from {
         box-shadow: 0 0 $primary-color-300
+
     }
     to {
-        box-shadow: -5px 5px $primary-color-300
+        box-shadow: -5px 5px $primary-color-300,
+                    -4px 4px $primary-color-300,
+                    -3px 3px $primary-color-300,
+                    -2px 2px $primary-color-300,
+                    -1px 1px $primary-color-300,
+                    0 0 $primary-color-300,
 
     }
 }
@@ -72,6 +78,11 @@ $desktop_header_paragraph: 1.8rem;
         box-shadow: -5px 5px $primary-color-300
     }
     to {
-        box-shadow: 0 0 $primary-color-300
+        box-shadow: -5px 5px $primary-color-300,
+                    -4px 4px $primary-color-300,
+                    -3px 3px $primary-color-300,
+                    -2px 2px $primary-color-300,
+                    -1px 1px $primary-color-300,
+                    0 0 $primary-color-300,
     }
 }
