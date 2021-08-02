@@ -1,7 +1,7 @@
 ## Paper-Worlds simply put is a website where you can find books and read short description
 
 
-![alt text]('./src/github_prototype_png/GH1.png')
+![alt text](https://github.com/MateuszUrb/Paper_world_website/tree/dev/src/github_prototype_png)
 
 ## Available Scripts
 
