@@ -4,7 +4,7 @@
 ## Website avaliable here:
 [Paper World website](https://paperworld.netlify.app/)
 
-![paper world website png](https://github.com/MateuszUrb/Paper_world_website/tree/main/src/github_prototype_png/GH1.png)
+![](src/github_prototype_png/GH1.png)
 
 ## Available Scripts
 
