@@ -1,19 +1,17 @@
 import './App.scss';
 import mailgo, { MailgoConfig } from 'mailgo';
-import React, { useEffect, Suspense, Redirect } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  withRouter,
-} from 'react-router-dom';
+import React, { useEffect, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { ToastContainer } from 'react-toastify';
 import Header from './components/Header';
 import BookSearchForm from './components/BookSearchForm';
 import Loading from './components/Loading.jsx';
 
+// style/graphic
 import style from './assets/styles/loadingPage.module.scss';
 import { ReactComponent as ResultSVG } from './assets/images/result_svg.svg';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Footer = React.lazy(() => import('./components/Footer'));
 const Book = React.lazy(() => import('./components/BookDetails'));
@@ -27,6 +25,7 @@ const MainPage = () => (
   <>
     <Header />
     <BookSearchForm />
+    <ToastContainer />
     <Footer />
   </>
 );
