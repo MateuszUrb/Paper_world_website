@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
@@ -23,8 +23,12 @@ const BookResults = (props) => {
     handleLoadMoreResults,
     handleLoadPrevResults,
   } = props;
+
   const scrollToTopResults = useRef(null);
-  const bookCount = data?.data?.totalItems;
+  let bookCount = data?.data?.totalItems;
+  // !for some reasons app is crashing when we clicked through to the last page, and if we click to go to the previous page, app crashes
+  // !reducing the amount of books by maxResults returned fix this error
+  bookCount -= maxResults;
 
   const scrollToTopBookResults = () => {
     scrollToTopResults.current.scrollIntoView();
@@ -58,7 +62,7 @@ const BookResults = (props) => {
         <div className={wrapper.container}>
           <header className={bookResults.recommendation}>
             <h2>{data && title}</h2>
-            {bookCount && (
+            {!Number.isNaN(bookCount) && (
               <h3 className={bookResults.totalBooks}>
                 total books: {startIndex >= bookCount ? bookCount : startIndex}/
                 {bookCount}
@@ -70,7 +74,7 @@ const BookResults = (props) => {
 
           <div className={styled.books_wraper}>
             {data?.data?.items.map((book) => (
-              <div className={booksFetching}>
+              <div className={booksFetching} key={book.id}>
                 <Link
                   key={book.id}
                   to={`/book/${book.id}`}

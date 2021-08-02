@@ -1,21 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '../assets/styles/bookCard.module.scss';
-/* eslint-disable react/prop-types */
 
 export default function BookCard(props) {
-  const { book } = props;
-  // using this method of destructing because i have weird error while using destruction in function props
-  const bookImg = book?.volumeInfo?.imageLinks?.thumbnail || '';
-  const bookId = book?.id;
-  const author = book?.volumeInfo?.authors;
-  const title = book?.volumeInfo?.title;
+  const {
+    book: {
+      id: bookId,
+      volumeInfo: {
+        authors: author,
+        imageLinks: { thumbnail = '' } = { thumbnail: undefined },
+        title,
+      },
+    },
+  } = props;
+
   return (
     <div className={styled.book} key={bookId}>
       <img
         className={styled.book_img}
-        src={bookImg !== undefined ? bookImg : 'img not available'}
+        src={thumbnail !== undefined ? thumbnail : 'img not available'}
         alt={
-          title && bookImg === undefined
+          title && thumbnail === undefined
             ? 'image not available'
             : `image not found ${title}`
         }
@@ -27,3 +32,7 @@ export default function BookCard(props) {
     </div>
   );
 }
+
+BookCard.propTypes = {
+  book: PropTypes.object.isRequired,
+};

@@ -17,13 +17,13 @@ export default function BookSearchForm() {
     `Search for Books: 'Harry Potter...' etc`
   );
   const [bookInput, setBookInput] = useState('');
-  const [startIndex, setStartIndex] = useState(28);
-  const [maxResults, setMaxResults] = useState(28);
+  const [startIndex, setStartIndex] = useState(25);
+  const [maxResults, setMaxResults] = useState(25);
   const [category, setCategory] = useState({ value: 'intitle:' });
 
   const fetchBooks = async () => {
     const response = await axios.get(
-      `${API_URL}q=${category.value}"${bookInput}"&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
+      `${API_URL}q="${bookInput}+${category.value}"&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
     );
     if (bookInput.length <= 0) {
       toast('🚨 input must contain at least one character 🚨', {
@@ -42,14 +42,13 @@ export default function BookSearchForm() {
     return response;
   };
   const { data, isLoading, isFetching, error, refetch } = useQuery(
-    ['books', bookInput],
+    [bookInput],
     fetchBooks,
     {
       enabled: false,
       retry: false,
     }
   );
-
   const handleInputChange = (e) => {
     setBookInput(() => e.target.value);
   };
@@ -60,12 +59,12 @@ export default function BookSearchForm() {
   };
 
   const handleLoadMoreResults = () => {
-    setStartIndex(() => startIndex + maxResults);
+    setStartIndex((prevState) => prevState + maxResults);
     refetch();
   };
 
   const handleLoadPrevResults = () => {
-    setStartIndex(() => startIndex - maxResults);
+    setStartIndex((prevState) => prevState - maxResults);
     refetch();
   };
 
