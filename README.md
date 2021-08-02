@@ -1,7 +1,10 @@
 ## Paper-Worlds simply put is a website where you can find books and read short description
 
 
-![alt text](https://github.com/MateuszUrb/Paper_world_website/tree/dev/src/github_prototype_png)
+## Website avaliable here:
+[Paper World website](https://paperworld.netlify.app/)
+
+![paper world website png](https://github.com/MateuszUrb/Paper_world_website/tree/main/src/github_prototype_png)
 
 ## Available Scripts
 
