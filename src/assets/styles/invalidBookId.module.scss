@@ -1,0 +1,26 @@
+@import './variables';
+@import './pageNotFound.module.scss';
+
+.invalidBookId__wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 8rem;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 8rem;
+    font-family: $martel-light-300;
+    color: white;
+    font-size: clamp(0.7rem, 1.2vw, 2.8rem);
+    &_goBack {
+        @include goHomeButton();
+        background-color: transparent;
+        cursor: pointer;
+    }
+    &_timer {
+        font-size: 2rem;
+        margin-left: 1rem;
+    }
+}
