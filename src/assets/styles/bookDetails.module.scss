@@ -1,0 +1,209 @@
+@import './variables';
+@import './bookSearchInput.module.scss';
+
+@mixin bookInfoStyle {
+    font-family: $martel-light-300;
+    font-weight: 600;
+    color: $cta-color-300;
+}
+
+.details_container {
+    height: fit-content;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: $primary-color-500;
+    position: relative;
+    overflow: hidden;
+
+    svg {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        pointer-events: none;
+    }
+}
+
+.nav {
+    height: 6rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 22px;
+    position: relative;
+    z-index: 10;
+
+    &__logo {
+        width: 50px !important;
+        height: 50px !important;
+        cursor: pointer;
+
+        &:hover {
+            transition: all 0.2s ease-in;
+            filter: drop-shadow(2px 6px 3px $primary-color-600);
+
+        }
+    }
+}
+
+.bookDetails__wrapper {
+    margin-top: 7rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 0.8fr 1.2fr 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 25px 25px;
+    grid-template-areas:
+      "img img title title title"
+      "img img author author author"
+      "img img book-info book-info book-info"
+      ". . desc desc desc";
+
+    @media screen and (max-width:900px) {
+        grid-template-columns: 1fr auto;
+        gap: 20px 0px;
+        margin-top: 4rem;
+        grid-template-areas:
+            "title title title title title"
+            "author author author author author"
+            "published published page-count page-count book-info"
+            "desc desc desc desc desc";
+    }
+     @media screen and (max-width:1200px) {
+          grid-template-areas:
+            "img img img img img"
+            "title title title title title"
+            "author author author author author"
+            "book-info book-info book-info book-info book-info"
+            "desc desc desc desc desc";
+    }
+}
+
+.bookDetails__wrapper_img {
+    justify-self: center;
+    align-self: start;
+    grid-area: img;
+}
+
+.bookDetails__img {
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.bookDetails__wrapper_title {
+    justify-self: start;
+    align-self: stretch;
+    grid-area: title;
+    width: 100%;
+    font-family: $martel-semibold-600;
+    font-size: clamp(0.7rem, 1.2vw, 2.8rem);
+    color: $primary-text;
+}
+
+.bookDetails__wrapper_author {
+    justify-self: stretch;
+    align-self: stretch;
+    grid-area: author;
+    font-family: $martel-semibold-600;
+    font-size: clamp(0.68rem, 1.2vw, 2.8rem);
+    color: $primary-text;
+}
+
+.bookDetails__wrapper_bookInfo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 25px;
+    grid-template-areas:
+    "published page-count categories"
+    "published page-count categories"
+    "published page-count categories";
+    grid-area: book-info;
+        @media screen and (max-width:900px) {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            gap: 20px 0px;
+            grid-template-areas:
+                "published"
+                "page-count "
+                "categories";
+        }
+}
+
+.bookDetails__wrapper_publishedDate {
+    grid-area: published;
+    @include bookInfoStyle();
+    background-color: $cart-color-600;
+    padding: 10px 0 0 6px;
+    box-shadow: -5px 5px  $primary-color-300;
+}
+
+.bookDetails__wrapper_pageCount {
+    grid-area: page-count;
+    @include bookInfoStyle();
+    background-color: $cart-color-600;
+    padding: 10px 0 0 6px;
+    box-shadow: -5px 5px  $primary-color-300;
+}
+
+.bookDetails__wrapper_category {
+    grid-area: categories;
+    @include bookInfoStyle();
+    background-color: $cart-color-600;
+    padding: 10px 0 0 6px;
+    box-shadow: -5px 5px  $primary-color-300;
+}
+
+.bookDetails__wrapper_description {
+    grid-area: desc;
+    font-family: $martel-regular-400;
+    font-weight: 400;
+    max-width: 75ch;
+    background-color: $cart-color-600;
+    color: $primary-text;
+    padding: 30px 5px;
+    border-radius: 5px;
+    @media screen and (max-width:1200px) {
+        max-width: 100%;
+     }
+}
+
+.read__book {
+    @include button;
+    margin: 20px 0;
+    width: fit-content;
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-family: inherit;
+        font-family: $martel-light-300;
+    }
+}
+
+.book_separator {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $cta-color-300;
+}
+
+.similarBooks {
+    margin-top: 4rem;
+    width: 100%;
+    min-height: 100vh;
+    &__title {
+        color: $cta-color-300;
+        font-family: $martel-regular-400;
+        font-weight: 400;
+    }
+    &__results {
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        margin: 5rem 0 35rem 0;
+        gap: 1.4rem;
+        justify-content: center;
+        &_book {
+            text-decoration: none;
+        }
+    }
+}

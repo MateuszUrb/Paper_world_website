@@ -1,0 +1,201 @@
+@import './variables';
+
+@mixin default_Next_prev_buttons {
+    border-radius: 3px;
+    height: 2.3rem;
+    border: none;
+    padding: 0.6rem 2rem;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 400;
+    background-color: $cta-color-300;
+    transition: transform 0.3s;
+    &:hover {
+        transform: translate(-3px, -3px);
+    }
+}
+
+.books_wraper {
+    display: grid;
+    position: relative;
+    gap: 1.4rem;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-bottom: 35rem;
+    @media screen and (max-width: 640px) {
+        margin-bottom: 23rem;
+
+    }
+    &_buttons {
+        display: flex;
+        position: absolute;
+        bottom: 0;
+        justify-content: space-between;
+        width: 100%;
+        transform: translateY(5rem);
+        &__prev {
+            @include default_Next_prev_buttons();
+            &:hover {
+                animation: buttonIn 1s forwards;
+            }
+        &__hidden {
+            visibility: hidden;
+        }
+        }
+        &__next {
+            @include default_Next_prev_buttons();
+            &:hover {
+                animation: buttonIn 1s forwards;
+            }
+            &__hidden {
+                visibility: hidden;
+            }
+        }
+        &__arrows {
+            color: $primary-color-600;
+        }
+    }
+}
+
+.book_link {
+    text-decoration: none;
+}
+
+.show_books {
+    animation: show_books 1s ease-in forwards;
+}
+
+.hide_books {
+    animation: hide_books 0.5s ease-in-out forwards;
+}
+
+.book {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    padding: 2rem;
+    color: $primary-text;
+    align-items: center;
+    cursor: pointer;
+    &_title {
+        font-size: 1.1rem;
+        text-align: center;
+        font-family: $martel-regular-400;
+        font-weight: 400;
+         @media screen and (max-width: 640px) {
+            font-weight: 400;
+            font-size: 14px;
+            text-align: start;
+        }
+    }
+    &_text {
+        @media screen and (max-width: 640px) {
+            overflow-y: scroll;
+            overflow-wrap: break-word;
+            margin-left: 1rem;
+            flex-direction: column;
+            display: flex;
+            height: 190px;
+            width: 50%;
+            justify-content: space-between;
+        }
+    }
+    &_img {
+        margin-bottom: 1rem;
+        max-width: 128px;
+        min-height: 190px;
+        text-align: center;
+        color: $secondary-color-300;
+        background-color: $primary-color-600;
+    }
+    &_author {
+        color: $secondary-color-300;
+        font-family: $martel-light-300;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        text-align: center;
+        line-height: 1.2rem;
+        @media screen and (max-width: 640px) {
+            font-weight: 400;
+            font-size: 13px;
+            text-align: start;
+            height: 9rem;
+            justify-self: start;
+        }
+    }
+    &:hover {
+        background-color: lighten(rgba(30, 28, 49, 0.80), 10);
+        transition: background-color 0.3s ease-in, transform 0.3s;
+        transform: translate(5px, -5px);
+        > img {
+            transition: transform 0.3s;
+            animation: book_shadow 1s forwards;
+            transform: translate(5px, -5px);
+
+        }
+    }
+    @media  screen and (max-width: 640px) {
+        flex-direction: row;
+        padding: 2rem 0 2remt;
+    }
+}
+
+@keyframes book_shadow {
+    from {
+        box-shadow: none;
+    } to {
+        box-shadow: -5px 5px 0px lighten($primary-color-500, 30);
+    }
+}
+
+@keyframes show_books {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hide_books {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+
+.info__loading {
+    display: flex;
+    justify-content: center;
+}
+
+.info__error {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    font-family: $martel-light-300;
+    background-color: $err-Bg;
+    color: $err-font-color;
+    padding: 1rem;
+    border-radius: 5px;
+    &_msg {
+        font-size: clamp($mobile_martelSemi_xs, 2vw, $desktop_header);
+        font-weight: 400;
+        max-width: 90%;
+    }
+    &_closeBtn {
+        position: absolute;
+        top: 0.5rem;
+        cursor: pointer;
+        font-size: 2rem;
+        right: 0.5rem;
+    }
+
+}
+

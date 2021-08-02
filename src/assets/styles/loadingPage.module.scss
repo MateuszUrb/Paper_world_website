@@ -1,0 +1,24 @@
+@import './variables';
+
+.loading__wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary-color-500;
+    & svg {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        pointer-events: none;
+    }
+    &_card {
+        width: 35%;
+        height: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $primary-color-600;
+    }
+}

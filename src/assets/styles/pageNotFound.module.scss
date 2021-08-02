@@ -1,0 +1,68 @@
+@import  './variables';
+
+@mixin goHomeButton {
+        color: hsl(255, 255, 255);
+        text-decoration: none;
+        font-family: $martel-semibold-600;
+        border: 1px solid #fff;
+        padding: 10px 20px;
+        transition: color 0.2s ease-in-out, background-color 0.2s;
+        font-weight: 600;
+        &:hover {
+            color: $primary-color-300;
+            background-color: #fff;
+        }
+}
+
+.pageNotFound {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    background-color: $primary-color-500;
+    & svg {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    &__wrapper {
+        position: relative;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+    &__number {
+        position: absolute;
+        font-size: 10rem;
+        transform: translateY(-90%);
+        color: $cta-color-300;
+        font-family: $martel-semibold-600;
+    }
+    &__title {
+        color: hsl(255, 255, 255);
+        font-family: $martel-light-300;
+        font-size: clamp($mobile_martelSemi_xs, 6vw, $desktop_header);
+        text-align: center;
+    }
+    &__description {
+        color: hsl(255, 255, 255);
+        font-family: $martel-light-300;
+        font-size: clamp($mobile_martelSemi_xs, 1.2vw, $desktop_header);
+        & code {
+            color: $cta-color-300;
+            background-color: $primary-color-600;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+    }
+    &__backToHome_Link {
+       @include goHomeButton();
+    }
+}

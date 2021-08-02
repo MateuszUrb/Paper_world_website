@@ -1,0 +1,88 @@
+/* colors */
+$primary-color-300: hsl(247, 27%, 62%);
+$primary-color-500: hsl(247, 27%, 32%);
+$primary-color-600: hsl(247, 27%, 12%);
+
+// text color
+$primary-text: hsl(210deg, 11%, 85%);
+
+// form BG
+$form-bg-gradient: linear-gradient(180deg, rgba(46,42,70,1) 25%, rgba(37,33,59,1) 59%, rgba(29,26,46,1) 99%);
+$form-bg: hsla(248, 28%, 21%, 1);
+$form-shadow: hsla(248, 27%, 16%, 50%);
+
+$secondary-color-300: hsl(48, 100%, 62%);
+$secondary-color-500: hsl(48, 100%, 32%);
+$secondary-color-600: hsl(48, 100%, 15%);
+
+$bookBGfill: hsla(48, 87, 75, 100%);
+
+$cta-color-300: hsl(12, 98%, 69%);
+$cta-color-500: hsl(12, 98%, 49%);
+$cta-color-600: hsl(12, 98%, 25%);
+
+// button
+$button-primary:  hsl(39, 100%, 69%);
+$disabled-button: hsla(12, 43%, 40%, 1);
+// error
+$err-Bg: hsl(0, 100%, 18%);
+$err-font-color: hsl(357, 100%, 60%);
+
+/* cart background */
+$cart-color-300: hsl(248, 28%, 61%);
+$cart-color-500: hsl(248, 28%, 31%);
+$cart-color-600: hsl(246, 27%, 15%);
+
+/* gradient from top left to bottom right  */
+$gradient-color-1: $primary-color-500;
+$gradient-color-2: hsl(48, 72%, 13%);;
+
+/* fonts */
+$martel-light-300: ('martellight', serif, sans-serif);
+$martel-regular-400: ('martelregular', serif, sans-serif);
+$martel-semibold-600: ('marteldemibold', serif, sans-serif);
+
+/* font-size */
+// mobile
+$mobile_martelSemi_xs: 1.1rem;
+$mobile_martelSemi_s: 0.9rem;
+$mobile_bookTitle: 1.6rem;
+$mobile_paragraph: 1rem;
+$mobile_book_description: 0.5rem;
+
+// desktop
+$desktop_header: 2.8rem;
+$desktop_header_paragraph: 1.8rem;
+
+
+// buttons animation
+
+@keyframes buttonIn  {
+    from {
+        box-shadow: 0 0 $primary-color-300
+
+    }
+    to {
+        box-shadow: -5px 5px $primary-color-300,
+                    -4px 4px $primary-color-300,
+                    -3px 3px $primary-color-300,
+                    -2px 2px $primary-color-300,
+                    -1px 1px $primary-color-300,
+                    0 0 $primary-color-300,
+
+    }
+}
+
+@keyframes buttonOut {
+    from {
+        box-shadow: -5px 5px $primary-color-300
+    }
+    to {
+        box-shadow: -5px 5px $primary-color-300,
+                    -4px 4px $primary-color-300,
+                    -3px 3px $primary-color-300,
+                    -2px 2px $primary-color-300,
+                    -1px 1px $primary-color-300,
+                    0 0 $primary-color-300,
+    }
+}

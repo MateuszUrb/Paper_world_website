@@ -1,0 +1,43 @@
+@import './variables';
+
+.results__container {
+    height: fit-content;
+    min-height: 35rem;
+    width: 100vw;
+    background-color: $primary-color-500;
+    position: relative;
+    overflow: hidden;
+    svg {
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        pointer-events: none;
+    }
+}
+
+.recommendation {
+    font-family: $martel-semibold-600;
+    margin: 55px 0 50px 0;
+    font-size: clamp($mobile_martelSemi_s, 5vw, $desktop_header_paragraph);
+    color: $cta-color-300;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+
+}
+
+.waves_Pattern {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    img {
+        width: 100%;
+        display: flex;
+        max-height: 22rem;
+    }
+}
+
+.totalBooks {
+    margin-bottom: 30px;
+}

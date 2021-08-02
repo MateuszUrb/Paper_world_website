@@ -1,0 +1,97 @@
+@import './variables';
+
+@mixin bookInput {
+        border-radius: 5px;
+        margin-right: 1rem;
+        padding-left: 2px;
+        height: 2.3rem;
+        width: 30%;
+        border: 2px solid $primary-color-500;
+        font-family: $martel-regular-400;
+        font-weight: 600;
+}
+
+@mixin button {
+        border-radius: 3px;
+        height: 2.3rem;
+        border: none;
+        padding: 0.6rem 2rem 0.6rem 1rem;;
+        background-color: $button-primary;
+        letter-spacing: 2px;
+        color: $primary-color-600;
+        font-size: $mobile_martelSemi_s;
+        cursor: pointer;
+        font-weight: 600;
+        transform: translateX(-5px);
+        transition: all 0.6s;
+        &:hover {
+            box-shadow: -5px 5px $primary-color-300,
+                    -4px 4px $primary-color-300,
+                    -3px 3px $primary-color-300,
+                    -2px 2px $primary-color-300,
+                    -1px 1px $primary-color-300,
+                    0 0 $primary-color-300,
+        }
+}
+
+.bookForm {
+    height: 5rem;
+    width: 100%;
+    background-color: $form-bg;
+    background: $form-bg-gradient;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 0;
+    filter: drop-shadow(0 8px 8px $form-shadow);
+    position: relative;
+    z-index: 10;
+    @media screen and (max-width: 552px) {
+        height: 7rem;
+    }
+    &__label {
+        color: $secondary-color-300;
+        font-family: $martel-light-300;
+        padding-right: 0.5rem;
+        @media screen and (max-width: 552px) {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+    &__input {
+        @include bookInput();
+        flex-shrink: 1;
+        @media screen and (max-width: 750px) {
+            flex-basis: 50%;
+        }
+        &:focus {
+            outline-color: $primary-color-500;
+        }
+        &_category {
+        @include bookInput();
+        width: fit-content;
+        margin-right: 0.2rem;
+        }
+        &_error {
+            @include bookInput();
+             border: 2px solid $err-font-color;
+             &:focus {
+                 outline-color: $err-font-color;
+             }
+        }
+    }
+    &__button {
+        @include button();
+        padding: 0.6rem 1rem 0.6rem 1rem;
+        &_icon {
+            margin-right: 1rem;
+            @media screen and (max-width: 640px) {
+                display: none;
+            }
+        }
+
+    }
+}
