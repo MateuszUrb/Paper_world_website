@@ -6,6 +6,12 @@
 
 ![](src/github_prototype_png/GH1.png)
 
+## things used in project:
+* axios
+* mailgo
+* react-query
+* react-toastify
+
 ## Available Scripts
 
 In the project directory, you can run:
