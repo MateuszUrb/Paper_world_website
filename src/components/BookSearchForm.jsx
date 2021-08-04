@@ -7,7 +7,7 @@ import BookResults from './BookResults';
 // style
 import searchForm from '../assets/styles/bookSearchInput.module.scss';
 
-export const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
+// export const KEY = process.env.REACT_APP_GOOGLE_BOOKS_API;
 export const API_URL = `https://www.googleapis.com/books/v1/volumes?`;
 
 toast.configure();
@@ -22,9 +22,6 @@ export default function BookSearchForm() {
   const [category, setCategory] = useState({ value: 'intitle:' });
 
   const fetchBooks = async () => {
-    const response = await axios.get(
-      `${API_URL}q="${bookInput}+${category.value}"&startIndex=${startIndex}&maxResults=${maxResults}&key=${KEY}`
-    );
     if (bookInput.length <= 0) {
       toast('🚨 input must contain at least one character 🚨', {
         type: 'warning',
@@ -32,6 +29,10 @@ export default function BookSearchForm() {
       });
       throw new Error('input must contain at least one character');
     }
+
+    const response = await axios.get(
+      `${API_URL}q="${bookInput}+${category.value}"&startIndex=${startIndex}&maxResults=${maxResults}`
+    );
     if (response.data.totalItems <= 0) {
       toast(`⛔ nothing was found with given word: ${bookInput}`, {
         type: 'error',
@@ -41,7 +42,8 @@ export default function BookSearchForm() {
     }
     return response;
   };
-  const { data, isLoading, isFetching, error, refetch } = useQuery(
+
+  const { data, isLoading, isFetching, error, isError, refetch } = useQuery(
     [bookInput],
     fetchBooks,
     {
@@ -49,6 +51,7 @@ export default function BookSearchForm() {
       retry: false,
     }
   );
+
   const handleInputChange = (e) => {
     setBookInput(() => e.target.value);
   };
@@ -121,6 +124,7 @@ export default function BookSearchForm() {
         data={data}
         title={bookInput}
         error={error}
+        isError={isError}
         key={1}
       />
     </>

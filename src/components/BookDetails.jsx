@@ -13,7 +13,6 @@ import bookResults from '../assets/styles/bookResultsSection.module.scss';
 import wrapper from '../assets/styles/contentWrapper.module.scss';
 import style from '../assets/styles/invalidBookId.module.scss';
 import BookCard from './BookCard';
-import { KEY } from './BookSearchForm';
 import Footer from './Footer';
 import Loading from './Loading';
 
@@ -91,7 +90,7 @@ const Book = ({ match }) => {
     const fetchSimilarBooks = async () => {
       try {
         const subjectData = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=${fetchedSubject}+${similarCategory}&maxResults=12&key=${KEY}`
+          `https://www.googleapis.com/books/v1/volumes?q=${fetchedSubject}+${similarCategory}&maxResults=12&`
         );
         console.log(subjectData);
         setSubjectBooks(subjectData);

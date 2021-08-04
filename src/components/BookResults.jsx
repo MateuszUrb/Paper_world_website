@@ -15,7 +15,7 @@ const BookResults = (props) => {
   const {
     data,
     title,
-    error,
+    isError,
     isLoading,
     isFetching,
     startIndex,
@@ -54,6 +54,7 @@ const BookResults = (props) => {
       ? styled.books_wraper_buttons__next__hidden
       : styled.books_wraper_buttons__next;
 
+  console.log(data);
   const booksFetching = !isFetching ? styled.show_books : styled.hide_books;
   return (
     <>
@@ -71,19 +72,21 @@ const BookResults = (props) => {
           </header>
           {isLoading && <Loading />}
           <div />
-
           <div className={styled.books_wraper}>
-            {data?.data?.items.map((book) => (
-              <div className={booksFetching} key={book.id}>
-                <Link
-                  key={book.id}
-                  to={`/book/${book.id}`}
-                  className={styled.book_link}
-                >
-                  <BookCard book={book} />
-                </Link>
-              </div>
-            ))}
+            {data &&
+              data?.data.items !== undefined &&
+              data?.data?.items.map((book) => (
+                <div className={booksFetching} key={book.id}>
+                  <Link
+                    key={book.id}
+                    to={`/book/${book.id}`}
+                    className={styled.book_link}
+                  >
+                    <BookCard book={book} />
+                  </Link>
+                </div>
+              ))}
+
             {data && (
               <div className={styled.books_wraper_buttons}>
                 <button
@@ -122,7 +125,7 @@ const BookResults = (props) => {
 
 BookResults.propTypes = {
   isLoading: PropTypes.bool,
-  error: PropTypes.bool,
+  isError: PropTypes.bool,
   title: PropTypes.string.isRequired,
   data: PropTypes.object,
   isFetching: PropTypes.bool,
