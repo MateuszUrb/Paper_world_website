@@ -1,13 +1,13 @@
-## Paper-Worlds simply put is a website where you can find books and read short description
+## Paper-Worlds simply put a website where you can find books and read a short description
 
 
-## Website avaliable here:
+## Website available here:
 [Paper World website](https://paperworld.netlify.app/)
 
 ![](src/github_prototype_png/GH1.png)
 
-## things used in project:
-* axios
+## Things used in the project:
+* Axios
 * mailgo
 * react-query
 * react-toastify
